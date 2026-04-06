@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="con">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+    <div class="con2">
+        <a href="" class="a">google</a>
+    </div>
+    <script>
+        let boxes = document.getElementsByClassName('con')[0].querySelectorAll('.box')
+        for (const i of boxes) {
+            i.style.backgroundColor += 'red'
+            i.textContent = 'red'
+            console.log('set', i.className += ' red');
+            console.log(i.className);
+            console.log(i.classList);
+        }
+        boxes[0].id = 'red'
+        document.querySelector('.con2').firstElementChild.setAttribute("href", "https://google.com")
+        console.log(document.querySelector('.con2').querySelector('a').getAttribute('href'));
+        boxes[0].textContent = document.querySelector('.con2').querySelector('a').getAttribute('href')
+        document.querySelector('.a').setAttribute('id', 'a')
+        document.querySelector('#a').removeAttribute('class')
+        console.log(document.querySelector('#a').hasAttribute('class'));
+        document.querySelector('#a').id = 's'
+        document.querySelector('#s').className = 's lsda adfs'
+        document.querySelector('#s').classList = 'l s'
+        document.querySelector('#s').classList.add("active")
+        document.querySelector('#s').classList.remove("active")
+        document.querySelector('#s').classList.toggle("active")
+        console.log('document.querySelector("#s").classList.toggle("active")', document.querySelector('#s').classList.contains("active"));
+        
+    </script>
+</body>
+
+</html>
