@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data Management</title>
+</head>
+
+<style>
+    input,
+    button {
+        padding: 8px 20px;
+        font-size: 22px;
+        margin-top: 2px;
+    }
+
+    td {
+        border: 2px solid #000;
+        padding: 10px 90px;
+        font-size: 25px;
+    }
+</style>
+
+<body>
+    <h1>Student Registeration</h1>
+    <div>
+        <div>
+            <input type="text" placeholder="Student Name">
+        </div>
+        <div>
+            <input type="text" placeholder="Roll Number">
+        </div>
+        <button onclick="get()">Submit</button>
+    </div>
+
+    <table class="data">
+
+    </table>
+
+    <script>
+        let v = []
+        let items = []
+        let input
+
+        function get() {
+            input = document.getElementsByTagName('input')
+            console.log(input);
+            console.log(items);
+            let StudentName = input[0]
+            let StudentId = input[1]
+            if (!StudentId.value || !StudentName.value) {
+                // return alert('enter student name and id both are required')
+            }
+            if (items.length >= 1) {
+                for (let i = 0; i < items.length; i++) {
+                    const element = items[i];
+                    if (StudentId.value === items[i].StudentId) {
+
+                        // return alert('Student Already Registered')
+                    }
+                }
+            }
+            items.push({ 'StudentName': StudentName.value, 'StudentId': StudentId.value })
+            val()
+        }
+        let num = 1
+        function val(params) {
+            v.push(num++)
+            document.getElementsByClassName('data')[0].innerHTML = ''
+            for (let i = 0; i < items.length; i++) {
+                const element = items[i];
+                document.getElementsByClassName('data')[0].innerHTML += `
+                    <tr>
+                        <td>${v[i]}</td>
+                        <td>${items[i].StudentName}</td>
+            <td>${items[i].StudentId}</td>
+            <td><button onclick="del(${i})">Delete</button></td>
+        </tr>
+        `
+    }
+        }
+
+        function del(i) {
+            items.splice(i, 1)
+            v.splice(i, 1)
+            num = num-i-1
+            val()
+        }
+    </script>
+</body>
+</html>
