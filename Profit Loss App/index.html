@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit Loss App</title>
+    <style>
+        input,
+        button {
+            padding: 8px 20px;
+            font-size: 22px;
+            margin-top: 2px;
+        }
+
+        div {
+            padding-bottom: 4px;
+            font-size: 20px;
+        }
+
+        button {
+            padding: 7px 10px;
+            font-size: 20px;
+            margin-top: 2px;
+        }
+
+        tr,
+        td {
+            padding: 7px 90px;
+            font-size: 20px;
+            border: 2px solid black;
+        }
+
+        button.green {
+            background: green;
+            color: #fff;
+        }
+
+        button.red {
+            background: red;
+            color: #fff;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="details">
+        <div>Profit:<div id="profit"></div>
+        </div>
+        <div>loss:<div id="loss"></div>
+        </div>
+        <div>expense:<div id="expense"></div>
+        </div>
+        <div>income:<div id="income"></div>
+        </div>
+    </div>
+    <input type="text" placeholder="Enter the Product name"><br><br>
+    <input type="text" placeholder="Enter Amount"><br><br>
+    <button onclick="get()">Submit</button><br><br>
+    <table>
+        <tbody id="tbodyy"></tbody>
+    </table>
+    <script>
+        // let details = [
+        //     {
+        //         profit: 0
+        //     },
+        //     {
+        //         loss: 0
+        //     },
+        //     {
+        //         income: 0
+        //     }, {
+        //         expense: 0
+        //     }
+        // ]
+        let input
+        let items = []
+        let profitloss
+        function get() {
+            input = document.getElementsByTagName('input')
+            let ProductName = input[0].value
+            let Amount = Number(input[1].value)
+            if (input[1].value.trim() === "") {
+                alert('Enter Amount')
+                return
+            }
+            let profit = Number(document.getElementById('profit').innerText) || 0
+            let expense = Number(document.getElementById('expense').innerText) || 0
+            let income = Number(document.getElementById('income').innerText) || 0
+            let loss = Number(document.getElementById('loss').innerText) || 0
+            
+            let p = document.getElementById('profit')
+            let e = document.getElementById('expense')
+            let l = document.getElementById('loss')
+            let i = document.getElementById('income')
+            if (p) {
+                p.innerText = p.innerText || 0
+            }
+            if (e) {
+                e.innerText = e.innerText || 0
+            }
+            if (l) {
+                l.innerText = l.innerText || 0
+            }
+            if (i) {
+                i.innerText = i.innerText || 0
+            }
+
+
+                    if (Amount > 0) {
+                        income += Amount
+                        items.push({ 'ProductName': ProductName, 'Amount': Amount, class: 'green', 'income':income })
+                        document.getElementById('income').innerText = Number(income)
+                        document.getElementById('tbodyy').innerHTML = ''
+                        
+                        for (let i = 0; i < items.length; i++) {
+
+                            document.getElementById('tbodyy').innerHTML += `<tr>
+                                <td>${items[i].ProductName}</td>
+                        <td class="${items[i].class}">${items[i].Amount}</td>
+                        <td>
+                            <button class="${items[i].class}" onclick="del(${i}, '${items[i].class}')">Delete</button>
+                            </td> 
+                            </tr>`
+                        }
+                    } else {
+                        items.push({ 'ProductName': ProductName, 'Amount': Amount, class: 'red', 'expense':expense })
+                        expense += Amount * -1
+                        document.getElementById('expense').innerText = expense
+                        document.getElementById('tbodyy').innerHTML = ''
+                        for (let i = 0; i < items.length; i++) {
+                            document.getElementById('tbodyy').innerHTML += `<tr>
+                <td>${items[i].ProductName}</td>
+                <td class="${items[i].class}"> ${items[i].Amount}</td>
+                <td>
+                    <button class="${items[i].class}" onclick="del(${i}, '${items[i].class}')">Delete</button>
+                    </td> 
+            </tr>`
+                        }
+                    }
+
+            profitloss = income - expense
+            // console.log(income);
+            // console.log(expense);
+            
+            if (profitloss > 0) {
+                document.getElementById('profit').innerText = profitloss
+            } else if ((profitloss < 0)) {
+                document.getElementById('loss').innerText = profitloss
+            } else if (profitloss == 0) {
+                document.getElementById('loss').innerText = 0 
+                document.getElementById('profit').innerText = 0
+                
+            }
+        }
+        
+        function del(i, classs) {
+            profitloss = profitloss - items[i].Amount
+
+            if(items[i].Amount<0){
+               let ex = document.getElementById('expense')
+               ex.innerText = Number(ex.innerText) + items[i].Amount //kiu itm[i].amount min mein hoga
+            }else{
+                let inc = document.getElementById('income')
+                inc.innerText = Number(inc.innerText) - items[i].Amount 
+            }
+
+            console.log(profitloss);
+            console.log(income);
+            console.log(expense);
+            if (profitloss > 0) {
+                document.getElementById('profit').innerText = profitloss
+            } else if ((profitloss < 0)) {
+                document.getElementById('loss').innerText = profitloss
+            } else if (profitloss == 0) {
+                document.getElementById('loss').innerText = 0 
+                document.getElementById('profit').innerText = 0
+    
+            }
+            items.splice(i, 1)
+
+            document.getElementById('tbodyy').innerHTML = ''
+            for (let i = 0; i < items.length; i++) {
+                document.getElementById('tbodyy').innerHTML += `<tr>
+                    <td>${items[i].ProductName}</td>
+                    <td class="${items[i].class}"> ${items[i].Amount}</td>
+                    <td>
+                        <button class="${items[i].class}" onclick="del(${i}, '${items[i].class}')">Delete</button>
+                        </td> 
+                        </tr>`
+                    }
+                    console.log(items[i]);
+                    
+        }
+    
+
+    </script>
+
+</body>
+
+</html>

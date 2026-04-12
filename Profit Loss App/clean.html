@@ -1,0 +1,74 @@
+<script>
+let items = []
+
+function get() {
+    let inputs = document.getElementsByTagName('input')
+    let ProductName = inputs[0].value
+    let Amount = Number(inputs[1].value)
+
+    if (inputs[1].value.trim() === "") {
+        alert('Enter Amount')
+        return
+    }
+
+    items.push({
+        ProductName,
+        Amount,
+        class: Amount > 0 ? 'green' : 'red'
+    })
+
+    render()
+    calculate()
+
+    inputs[0].value = ''
+    inputs[1].value = ''
+}
+
+function render() {
+    let tbody = document.getElementById('tbodyy')
+    tbody.innerHTML = ''
+
+    items.forEach((item, i) => {
+        tbody.innerHTML += `
+        <tr>
+            <td>${item.ProductName}</td>
+            <td class="${item.class}">${item.Amount}</td>
+            <td>
+                <button class="${item.class}" onclick="del(${i})">Delete</button>
+            </td>
+        </tr>`
+    })
+}
+
+function calculate() {
+    let income = 0
+    let expense = 0
+
+    items.forEach(item => {
+        if (item.Amount > 0) {
+            income += item.Amount
+        } else {
+            expense += Math.abs(item.Amount)
+        }
+    })
+
+    document.getElementById('income').innerText = income
+    document.getElementById('expense').innerText = expense
+
+    let result = income - expense
+
+    if (result >= 0) {
+        document.getElementById('profit').innerText = result
+        document.getElementById('loss').innerText = 0
+    } else {
+        document.getElementById('loss').innerText = Math.abs(result)
+        document.getElementById('profit').innerText = 0
+    }
+}
+
+function del(i) {
+    items.splice(i, 1)
+    render()
+    calculate()
+}
+</script>
