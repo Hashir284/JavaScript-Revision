@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #000;
+            color: #fff;
+        }
+                input,
+        button {
+            padding: 8px 20px;
+            font-size: 22px;
+            margin-top: 2px;
+        }
+
+        div {
+            padding-bottom: 4px;
+            font-size: 20px;
+        }
+
+        button {
+            padding: 7px 10px;
+            font-size: 20px;
+            margin-top: 2px;
+        }
+
+        tr,
+        td {
+            padding: 7px 90px;
+            font-size: 20px;
+            border: 2px solid black;
+        }
+
+        button.green {
+            background: green;
+            color: #fff;
+        }
+
+        button.red {
+            background: red;
+            color: #fff;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+
+        input, button{
+            background: rgba(255, 255, 0, 0.253);
+        }
+    </style>
+</head>
+<body>
+    <div id="details">
+        <div>Profit:<div id="profit"></div>
+        </div>
+        <div>loss:<div id="loss"></div>
+        </div>
+        <div>expense:<div id="expense"></div>
+        </div>
+        <div>income:<div id="income"></div>
+        </div>
+    </div>
+    <input type="text" placeholder="Enter the Product name"><br><br>
+    <input type="text" placeholder="Enter Amount"><br><br>
+    <button onclick="get()">Submit</button><br><br>
+    <table>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <script src="script2.js"></script>
+</body>
+</html>
