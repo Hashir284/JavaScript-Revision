@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Submit Example</title>
+</head>
+<body>
+
+    <h2>Login Form</h2>
+
+    <form id="myForm">
+        <input type="text" id="username" placeholder="Username"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="msg"></p>
+
+    <script>
+        let form = document.getElementById("myForm");
+        let msg = document.getElementById("msg");
+
+        // MODERN WAY (BEST)
+        form.addEventListener("submit", function (e) {
+            e.preventDefault(); // page reload rokta hai
+
+            let user = document.getElementById("username").value;
+            let pass = document.getElementById("password").value;
+
+            if (user === "" || pass === "") {
+                msg.innerText = "❌ All fields are required";
+                msg.style.color = "red";
+            } else {
+                msg.innerText = "✅ Form Submitted Successfully";
+                msg.style.color = "green";
+            }
+
+            console.log("Submitted via addEventListener");
+        });
+
+
+        // OLD WAY (sirf samajhne ke liye)
+        form.onsubmit = function () {
+            console.log("Submitted via onsubmit");
+        };
+    </script>
+
+</body>
+</html>

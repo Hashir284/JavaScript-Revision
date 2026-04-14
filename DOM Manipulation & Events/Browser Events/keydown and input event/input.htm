@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="qty" placeholder="Quantity">
+<p id="total"></p>
+
+<script>
+let qty = document.getElementById("qty");
+let total = document.getElementById("total");
+
+qty.addEventListener("input", function () {
+    total.innerText = qty.value * 100;
+});
+</script>
+</body>
+</html>

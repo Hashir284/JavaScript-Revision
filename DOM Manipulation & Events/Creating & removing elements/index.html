@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- createElement() → element banana
+    append() → modern add (text + element)
+    appendChild() → old add (1 element)
+    remove() → direct delete                
+    removeChild() → parent ke through delete
+    parent.replaceChild(newChild, oldChild)→ replace element 
+    elment.replacewith(replace)-->
+    <div id="container1"></div>
+    <div id="container2"></div>
+    <div id="container3">
+        <div>div</div>
+    </div>
+
+    <div id="container4">
+        <div id="replace">Non-replace</div>
+        <button id="b" onclick="c()">Change</button>
+    </div>
+
+
+    <script>
+
+        let div = document.createElement('div')
+        div.innerText = 'ABC div'
+        let span = document.createElement('span')
+        span.innerText = 'ABC span'
+        document.getElementById('container1').append('container1', div)
+        // document.getElementById('container2').appendChild('container2')  -> error
+        // document.getElementById('container2').append(div,span)  -> error
+
+        document.getElementById('container2').append('container2', span)
+
+        document.getElementById('container2').removeChild(span)
+        span.remove()
+
+        document.getElementById('container3').append('container3')
+        // document.getElementById('container3').removeChild(document.querySelector('div')) // error
+        //correct is
+        let parent = document.getElementById('container3');
+        let child = parent.querySelector('div');
+        parent.removeChild(child);
+        // document.getElementById('container3').remove()
+
+        function c() {
+            let con4 = document.getElementById('container4')
+            let replace = document.getElementById('replace')
+            let div2 = document.createElement('div')
+            div2.id = 'replace'
+            div2.innerText = 'Replace'
+            replace.replaceWith(div2)
+            document.getElementById('b').onclick = q
+            // con4.replacechild(div2)
+        }
+
+        function q() {
+            let con4 = document.getElementById('container4')
+            let replace = document.getElementById('replace')
+            let div2 = document.createElement('div')
+            div2.id = 'replace'
+            div2.innerText = 'non-Replace'
+            // replace.replaceWith(div2)
+            con4.replaceChild(div2, replace)
+            document.getElementById('b').onclick = c
+        }
+
+
+    </script>
+
+</body>
+
+</html>

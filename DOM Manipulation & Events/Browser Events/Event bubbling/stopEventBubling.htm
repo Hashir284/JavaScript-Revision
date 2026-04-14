@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stop Bubbling</title>
+</head>
+<body>
+
+<div id="parent" style="padding:50px; background:lightblue;">
+    Parent Div
+
+    <button id="child">Click Me</button>
+</div>
+
+<script>
+document.getElementById("parent").addEventListener("click", function () {
+    alert("Parent clicked");
+});
+
+document.getElementById("child").addEventListener("click", function (e) {
+    e.stopPropagation(); // 🔥 bubbling stop
+    alert("Child clicked");
+});
+</script>
+
+</body>
+</html>
