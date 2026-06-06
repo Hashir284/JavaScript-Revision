@@ -23,5 +23,3 @@ arr.reduce((acc, curr, index, array) => {
     console.log('curr', curr);// result = currentvalue
     return acc + curr
 });
-
-

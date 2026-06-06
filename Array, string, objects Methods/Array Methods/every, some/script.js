@@ -6,7 +6,7 @@ let result = arr.some((num, i, arr, f)=>{
     // console.log(num);
     // console.log(i);
     // console.log(arr);
-    console.log(f); // undefine
+    console.log(f, arr); // undefine
     return num>2
 });
 console.log(result);

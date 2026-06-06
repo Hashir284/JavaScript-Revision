@@ -14,7 +14,7 @@ console.log(result);
 
 var arr = [0, 1, false, 2, "", 3, null];
 var result = arr.filter(Boolean);
-console.log(result);
+console.log('boolean', result);
 
 var names = ["Ali", "Ahmed", "Sara", "Alina"];
 var result = names.filter(name => name.startsWith("Al"));
@@ -22,6 +22,9 @@ console.log(result);
 
 var arr = [1, 2, 2,,453,534,2,2,2, 3, 3, 4,'num','num','','','']
 var result = arr.filter((num, index) => {
-    return arr.indexOf(num) === index;
+    return arr.indexOf(num) === index; // true/false
 });
+// 0 = 0 
+// 1 = 1
+// 1 = 2 false it will remove
 console.log(result);

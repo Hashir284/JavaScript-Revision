@@ -10,11 +10,11 @@ var max = arr.reduce((acc, curr) => {
 }, arr[0]);
 console.log(max);
 
-
 arr = [[1, 2], [3, 4], [5]];
 let flat = arr.reduce((acc, curr) => {
     return acc.concat(curr);
-});// or let flat = arr.reduce((acc, curr) => {
+});
+// or let flat = arr.reduce((acc, curr) => {
 // return acc.concat(curr);
 // }, []);
 console.log(flat);
@@ -22,7 +22,9 @@ console.log(flat);
 
 arr = ["a", "b", "a", "c", "b", "a"];
 let count = arr.reduce((acc, curr) => {
+    console.log(acc,curr);
     acc[curr] = (acc[curr] || 0) + 1;   // a:1 b:1 a:2 c:1 b:2 a:3
+    console.log(acc[curr]); 
     return acc;
 }, {});
 console.log(count);
