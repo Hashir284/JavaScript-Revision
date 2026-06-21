@@ -1,4 +1,4 @@
-// Hoisting = JavaScript automatically variables & functions ko top pe “lift” karta hai before execution
+// Hoisting = JavaScript automatically var variable & functions ko top pe “lift” karta hai before execution
 
 // Var Hoisting
 console.log(a); // undefined

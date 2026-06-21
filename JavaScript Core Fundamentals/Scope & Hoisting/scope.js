@@ -5,7 +5,7 @@ let a = 10; // global
 function test() {
     console.log(a); // 10
 }
-
+    
 console.log(a); // 10
 test();
 
