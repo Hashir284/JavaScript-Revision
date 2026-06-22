@@ -6,7 +6,7 @@ var a = 5;
 
 //let/const hoisting
 // console.log(b); // Error: Cannot access 'b' before initialization
-// let b = 10;
+// let b = 10;  
 
 // greet();
 // function greet() {
