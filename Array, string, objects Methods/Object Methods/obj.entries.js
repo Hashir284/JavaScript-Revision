@@ -3,7 +3,7 @@ let user = {
     age: 20
 };
 let entires = Object.entries(user)
-console.log(entires);
+console.log('Entries',entires);
 
 entires.forEach(([key, value])=>{
  console.log(key, value);

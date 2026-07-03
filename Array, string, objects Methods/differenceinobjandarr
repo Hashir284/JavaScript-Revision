@@ -1,0 +1,9 @@
+Array kya hota hai?
+
+Array multiple values ko ek hi variable mein store karta hai. Iske elements ko index (0, 1, 2...) se access kiya jata hai.
+
+Object kya hota hai?
+
+Object data ko key-value pairs ki form mein store karta hai. Iski values ko key (property name) se access kiya jata hai.
+
+Array mein data index ke through access hota hai, jabke object mein data key (property name) ke through access hota hai.
